@@ -18,7 +18,11 @@
 
       5. Add a countdown timer - when the time is up, end the quiz, display the score and highlight the correct answers
 *************************** */
-
+//const submitButton = document.querySelector("#btnSubmit");
+//const btnReset = document.querySelector("#btnReset");
+//const liElement =document.querySelector(".list-group-item");
+//const score = document.querySelector("#score");
+//const quizWrap = document.querySelector("#quizWrap")
 window.addEventListener('DOMContentLoaded', () => {
   const start = document.querySelector('#start');
   start.addEventListener('click', function (e) {
@@ -44,6 +48,16 @@ window.addEventListener('DOMContentLoaded', () => {
       o: ['Sydney', 'Canberra', 'Melbourne', 'Perth'],
       a: 1,
     },
+    {
+      q:"What year was JavaScript launched?",
+      o: ["1996", "1995",  "1994", "none of the above"],
+      a: 1,
+    },
+    {
+      q: "What does HTML stand for?",
+      o: ["Hypertext Markup Language","Hypertext Markdown Language", "Hyperloop Machine Language", "Helicopters Terminals Motorboats Lamborginis"],
+      a: 0,
+    },
   ];
 
   // function to Display the quiz questions and answers from the object
@@ -53,7 +67,7 @@ window.addEventListener('DOMContentLoaded', () => {
     quizArray.map((quizItem, index) => {
       quizDisplay += `<ul class="list-group">
                    Q - ${quizItem.q}
-                    <li class="list-group-item mt-2" id="li_${index}_0"><input type="radio" name="radio${index}" id="radio_${index}_0"> ${quizItem.o[0]}</li>
+                    <li class="list-group-item" id="li_${index}_0"><input type="radio" name="radio${index}" id="radio_${index}_0"> ${quizItem.o[0]}</li>
                     <li class="list-group-item" id="li_${index}_1"><input type="radio" name="radio${index}" id="radio_${index}_1"> ${quizItem.o[1]}</li>
                     <li class="list-group-item"  id="li_${index}_2"><input type="radio" name="radio${index}" id="radio_${index}_2"> ${quizItem.o[2]}</li>
                     <li class="list-group-item"  id="li_${index}_3"><input type="radio" name="radio${index}" id="radio_${index}_3"> ${quizItem.o[3]}</li>
@@ -69,6 +83,7 @@ window.addEventListener('DOMContentLoaded', () => {
     quizArray.map((quizItem, index) => {
       for (let i = 0; i < 4; i++) {
         //highlight the li if it is the correct answer
+submitButton.addEventListener
         let li = `li_${index}_${i}`;
         let r = `radio_${index}_${i}`;
         liElement = document.querySelector('#' + li);
@@ -76,15 +91,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (quizItem.a == i) {
           //change background color of li element here
+          liElement.style.backgroundColor = 'green';
         }
 
         if (radioElement.checked) {
           // code for task 1 goes here
-        }
+          score++;
+          console.log("score" + score);
       }
+    }
     });
   };
 
   // call the displayQuiz function
   displayQuiz();
+let submitutton = document.getElementById("#btnSubmit");
+submitButton = addEvrntListener('click', calculateScore);
 });
